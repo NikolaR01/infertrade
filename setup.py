@@ -22,7 +22,7 @@ infertrade setup.py file
 import re
 
 from os import walk
-from pathlib import Path
+from pathlib import Path    
 
 # Third library (not InferStat)
 from setuptools import find_packages, setup
@@ -32,7 +32,7 @@ PROJECT_NAME = "infertrade"
 PROJECT_DESCRIPTION = "Pandas and SciKit Learn compatible open source interface for algorithmic trading functions."
 BLACKLIST_DIRS = ["example_scripts"]
 
-this_directory = Path(__file__).cwd()
+this_directory = Path(__file__).cwd()   
 
 
 def get_long_description(filename: str = "README.md") -> str:
@@ -44,13 +44,6 @@ def get_long_description(filename: str = "README.md") -> str:
         long_description = ""
     return long_description
 
-
-def get_pkg_list(requirement_file: str) -> list:
-    """Returns a list of packages requirements from listed file."""
-    with open(Path.joinpath(this_directory, requirement_file)) as f:
-        packages_full_list = [pkg.strip() for pkg in f.readlines() if not pkg.startswith("#")]
-        list_of_packages_with_versions = [pkg for pkg in packages_full_list if pkg]
-    return list_of_packages_with_versions
 
 
 def get_version(filename: str = "_version.py") -> str:
@@ -77,11 +70,9 @@ def get_version(filename: str = "_version.py") -> str:
         return about["__version__"]
 
 
-# Get a list of packages as defined in file
-
-package_requirements = ['pandas>=1.2.4', 'numpy>=1.20.1', 'ta>=0.7.0', 'scikit-learn>=0.23.1', 'matplotlib>=3.3.4', 'typing_extensions>=3.7.4.3']
-
-dev_requirements = get_pkg_list("requirements-dev.txt")
+# List of requirements as in requirements.txt
+PACKAGE_REQUIREMENTS = ['pandas>=1.2.4', 'numpy>=1.20.1', 'ta>=0.7.0', 'scikit-learn>=0.23.1', 'matplotlib>=3.3.4', 'typing_extensions>=3.7.4.3']
+DEV_REQUIREMENTS = 'pytest==6.2.2'
 
 # Setting up basic parameters of infertrade library
 setup(
@@ -95,8 +86,8 @@ setup(
     author="Thomas Oliver",
     author_email="support@infertrade.com",
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-    install_requires=package_requirements,
-    extras_require={"dev": dev_requirements},
+    install_requires=PACKAGE_REQUIREMENTS,
+    extras_require={"dev": DEV_REQUIREMENTS},
     tests_require=["pytest"],
     python_requires=">=3.7.0,<3.8.0",
     classifiers=[
