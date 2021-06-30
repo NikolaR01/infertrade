@@ -78,7 +78,9 @@ def get_version(filename: str = "_version.py") -> str:
 
 
 # Get a list of packages as defined in file
-package_requirements = get_pkg_list("requirements.txt")
+
+package_requirements = ['pandas>=1.2.4', 'numpy>=1.20.1', 'ta>=0.7.0', 'scikit-learn>=0.23.1', 'matplotlib>=3.3.4', 'typing_extensions>=3.7.4.3']
+
 dev_requirements = get_pkg_list("requirements-dev.txt")
 
 # Setting up basic parameters of infertrade library
