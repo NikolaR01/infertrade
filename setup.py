@@ -32,6 +32,10 @@ PROJECT_NAME = "infertrade"
 PROJECT_DESCRIPTION = "Pandas and SciKit Learn compatible open source interface for algorithmic trading functions."
 BLACKLIST_DIRS = ["example_scripts"]
 
+PACKAGE_REQUIREMENTS = ['pandas>=1.2.4', 'numpy>=1.20.1', 'ta>=0.7.0', 'scikit-learn>=0.23.1', 'matplotlib>=3.3.4', 'typing_extensions>=3.7.4.3']
+DEV_REQUIREMENTS = 'pytest==6.2.2'
+
+
 this_directory = Path(__file__).cwd()   
 
 
@@ -70,9 +74,6 @@ def get_version(filename: str = "_version.py") -> str:
         return about["__version__"]
 
 
-# List of requirements as in requirements.txt
-PACKAGE_REQUIREMENTS = ['pandas>=1.2.4', 'numpy>=1.20.1', 'ta>=0.7.0', 'scikit-learn>=0.23.1', 'matplotlib>=3.3.4', 'typing_extensions>=3.7.4.3']
-DEV_REQUIREMENTS = 'pytest==6.2.2'
 
 # Setting up basic parameters of infertrade library
 setup(
